@@ -1,0 +1,24 @@
+HELP.md
+.gradle
+build/
+target/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**
+!**/src/test/**
+.sts4-cache/
+
+### STS ###
+.classpath
+.project
+.settings/
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+out/
+bin/
+
+### VS Code ###
+.vscode/

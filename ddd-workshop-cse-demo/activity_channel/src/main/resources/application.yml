@@ -1,0 +1,6 @@
+server:
+#  port: 9003
+  port: 9013
+spring:
+  main:
+    web-application-type: none

@@ -1,0 +1,10 @@
+server:
+#  port: 9000
+  port: 9010
+activity:
+  server:
+    api:
+      create: cse://activity/jxmall/activities
+spring:
+  main:
+    web-application-type: none

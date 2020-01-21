@@ -1,0 +1,19 @@
+server:
+#  port: 9001
+  port: 9011
+activity:
+  rule:
+    server:
+      api:
+        month: cse://activity_rules/jxmall/activity_rules/month/{month}
+  qualification:
+    server:
+      api:
+        current: cse://activity_qualification/jxmall/activity_qualifications/current-date
+  benefit:
+    server:
+      api:
+        source: cse://activity_benefit/jxmall/activity_benefits/source/{source}
+spring:
+  main:
+    web-application-type: none

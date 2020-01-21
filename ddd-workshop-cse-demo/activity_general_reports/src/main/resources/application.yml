@@ -1,0 +1,6 @@
+server:
+#  port: 9004
+  port: 9014
+spring:
+  main:
+    web-application-type: none

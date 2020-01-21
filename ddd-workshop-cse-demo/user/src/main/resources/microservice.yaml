@@ -1,0 +1,53 @@
+APPLICATION_ID: ddd-workshop
+service_description: 
+  name: user
+  version: 0.0.1
+  properties:
+    allowCrossApp: false
+
+cse:
+#servicecomb:
+  service:
+    registry:
+      address: https://cse.cn-north-4.myhuaweicloud.com
+#      address: http://127.0.0.1:30100
+      instance:
+        watch: false
+  config:
+    client:
+#      serverUri: https://192.168.69.130:30103
+      serverUri: https://cse.cn-north-4.myhuaweicloud.com
+      refreshMode: 1
+      refresh_interval: 5000
+      enable: true
+  monitor:
+    client:
+#      serverUri: https://192.168.69.130:30109
+      serverUri: https://cse.cn-north-4.myhuaweicloud.com
+      enable: true
+  rest:
+#    address: 0.0.0.0:9000
+    address: 0.0.0.0:9010
+  credentials:
+    accessKey: 0QW7ZMETOVSH2PXMCUKO
+    secretKey: 5DQ2dAJzabn5CvLcx6MCLjSCCVqQdNtysmMr7igo
+    akskCustomCipher: default
+    project: cn-north-4       #引擎所在项目或子项目名称，默认为cn-north-1；若无法解析，则配置为default，可能导致token认证失败。获取方法见本章节前提条件。
+  handler:
+    chain:
+      Consumer:
+        default: qps-flowcontrol-consumer,loadbalance,tracing-consumer,bizkeeper-consumer
+      Provider:
+        default: qps-flowcontrol-provider,tracing-provider,bizkeeper-provider
+  metrics:
+    window_time: 60000
+    publisher:
+      defaultLog:
+        enabled: true
+  tracing:
+    enabled: true
+    samplingRate: 1.0
+
+#servicecomb:
+#  engine:
+#    name:  default #请填写正确的ServiceComb专享版引擎 引擎名字. 如果要使用逻辑多租引擎 Cloud Service Engine,这里可以填写 default

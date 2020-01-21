@@ -1,0 +1,48 @@
+APPLICATION_ID: ddd-workshop
+service_description: 
+  name: activity_general_reports
+  version: 0.0.2
+  properties:
+    allowCrossApp: false
+cse:
+#servicecomb:
+  service:
+    registry:
+      address: https://cse.cn-north-4.myhuaweicloud.com
+#      address: http://127.0.0.1:30100
+      instance:
+        watch: false
+  config:
+    client:
+      serverUri: https://cse.cn-north-4.myhuaweicloud.com
+      refreshMode: 1
+      refresh_interval: 5000
+      enable: true
+  monitor:
+    client:
+      serverUri: https://cse.cn-north-4.myhuaweicloud.com
+      enable: true
+
+  rest:
+#    address: 0.0.0.0:9004
+    address: 0.0.0.0:9014 
+  credentials:
+    accessKey: 0QW7ZMETOVSH2PXMCUKO
+    secretKey: 5DQ2dAJzabn5CvLcx6MCLjSCCVqQdNtysmMr7igo
+    akskCustomCipher: default
+    project: cn-north-4 # 请填写project项目名称
+  handler:
+    chain:
+      Consumer:
+        default: qps-flowcontrol-consumer,loadbalance,tracing-consumer,bizkeeper-consumer
+      Provider:
+        default: qps-flowcontrol-provider,tracing-provider,bizkeeper-provider
+  metrics:
+    window_time: 60000
+    publisher:
+      defaultLog:
+        enabled: true
+  tracing:
+    enabled: true
+    samplingRate: 1.0
+

@@ -1,0 +1,771 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (malloc) failed to allocate 32744 bytes for ChunkPool::allocate
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   The process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+#   JVM is running with Zero Based Compressed Oops mode in which the Java heap is
+#     placed in the first 32GB address space. The Java Heap base address is the
+#     maximum limit for the native heap growth. Please use -XX:HeapBaseMinAddress
+#     to set the Java Heap base and to place the Java Heap above 32GB virtual address.
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (allocation.cpp:272), pid=16604, tid=0x0000000000003ecc
+#
+# JRE version: OpenJDK Runtime Environment (8.0_222-b10) (build 1.8.0_222-Huawei_JDK_V100R001C00SPC150B002-b10)
+# Java VM: OpenJDK 64-Bit Server VM (25.222-b10 mixed mode windows-amd64 compressed oops)
+# Failed to write core dump. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x000000001e85a000):  JavaThread "C1 CompilerThread3" daemon [_thread_in_native, id=16076, stack(0x000000001f190000,0x000000001f290000)]
+
+Stack: [0x000000001f190000,0x000000001f290000]
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [jvm.dll+0x3277e9]
+
+
+Current CompileTask:
+C1:   1390 2044       3       org.apache.maven.artifact.versioning.VersionRange::createFromVersionSpec (324 bytes)
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x000000001e939800 JavaThread "Service Thread" daemon [_thread_blocked, id=20448, stack(0x000000001f290000,0x000000001f390000)]
+=>0x000000001e85a000 JavaThread "C1 CompilerThread3" daemon [_thread_in_native, id=16076, stack(0x000000001f190000,0x000000001f290000)]
+  0x000000001e84d000 JavaThread "C2 CompilerThread2" daemon [_thread_in_native, id=9124, stack(0x000000001f090000,0x000000001f190000)]
+  0x000000001e84a000 JavaThread "C2 CompilerThread1" daemon [_thread_blocked, id=21424, stack(0x000000001ef90000,0x000000001f090000)]
+  0x000000001e848800 JavaThread "C2 CompilerThread0" daemon [_thread_in_native, id=2044, stack(0x000000001ee90000,0x000000001ef90000)]
+  0x000000001e846000 JavaThread "Monitor Ctrl-Break" daemon [_thread_in_native, id=25436, stack(0x000000001ed90000,0x000000001ee90000)]
+  0x000000001e79a800 JavaThread "Attach Listener" daemon [_thread_blocked, id=16760, stack(0x000000001ec80000,0x000000001ed80000)]
+  0x000000001c73c000 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=21676, stack(0x000000001eb80000,0x000000001ec80000)]
+  0x000000001c729800 JavaThread "Finalizer" daemon [_thread_blocked, id=14700, stack(0x000000001e610000,0x000000001e710000)]
+  0x000000001c722000 JavaThread "Reference Handler" daemon [_thread_blocked, id=24368, stack(0x000000001e510000,0x000000001e610000)]
+  0x0000000000fc0000 JavaThread "main" [_thread_blocked, id=26212, stack(0x0000000002b30000,0x0000000002c30000)]
+
+Other Threads:
+  0x000000001c6fb800 VMThread [stack: 0x000000001e410000,0x000000001e510000] [id=23412]
+  0x000000001e93b800 WatcherThread [stack: 0x000000001f390000,0x000000001f490000] [id=11308]
+
+VM state:at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x0000000000fbece0] Threads_lock - owner thread: 0x000000001c6fb800
+[0x0000000000fbd4e0] Heap_lock - owner thread: 0x0000000000fc0000
+
+heap address: 0x00000006c2800000, size: 4056 MB, Compressed Oops mode: Zero based, Oop shift amount: 3
+Narrow klass base: 0x0000000000000000, Narrow klass shift: 3
+Compressed class space size: 1073741824 Address: 0x00000007c0000000
+
+Heap:
+ PSYoungGen      total 75776K, used 73964K [0x000000076b800000, 0x0000000770c80000, 0x00000007c0000000)
+  eden space 65024K, 100% used [0x000000076b800000,0x000000076f780000,0x000000076f780000)
+  from space 10752K, 83% used [0x000000076f780000,0x000000077003b170,0x0000000770200000)
+  to   space 10752K, 90% used [0x0000000770200000,0x0000000770b7a020,0x0000000770c80000)
+ ParOldGen       total 173568K, used 32K [0x00000006c2800000, 0x00000006cd180000, 0x000000076b800000)
+  object space 173568K, 0% used [0x00000006c2800000,0x00000006c2808000,0x00000006cd180000)
+ Metaspace       used 14984K, capacity 15298K, committed 15488K, reserved 1062912K
+  class space    used 1807K, capacity 1911K, committed 1920K, reserved 1048576K
+
+Card table byte_map: [0x0000000012000000,0x00000000127f0000] byte_map_base: 0x000000000e9ec000
+
+Marking Bits: (ParMarkBitMap*) 0x000000006a504310
+ Begin Bits: [0x0000000013540000, 0x00000000174a0000)
+ End Bits:   [0x00000000174a0000, 0x000000001b400000)
+
+Polling page: 0x0000000000f20000
+
+CodeCache: size=245760Kb used=7143Kb max_used=7143Kb free=238616Kb
+ bounds [0x0000000002c40000, 0x0000000003350000, 0x0000000011c40000]
+ total_blobs=2375 nmethods=2036 adapters=252
+ compilation: enabled
+
+Compilation events (250 events):
+Event: 1.301 Thread 0x000000001e85a000 nmethod 1914 0x00000000032d83d0 code [0x00000000032d8520, 0x00000000032d8710]
+Event: 1.301 Thread 0x000000001e85a000 1915       3       java.util.regex.Matcher::group (112 bytes)
+Event: 1.302 Thread 0x000000001e85a000 nmethod 1915 0x00000000032db890 code [0x00000000032dbac0, 0x00000000032dc848]
+Event: 1.302 Thread 0x000000001e85a000 1912       1       org.apache.maven.model.Parent::getVersion (5 bytes)
+Event: 1.302 Thread 0x000000001e85a000 nmethod 1912 0x00000000032db5d0 code [0x00000000032db720, 0x00000000032db830]
+Event: 1.303 Thread 0x000000001e85a000 1916       1       sun.nio.ch.NativeThread::current (2 bytes)
+Event: 1.303 Thread 0x000000001e85a000 nmethod 1916 0x00000000032cdcd0 code [0x00000000032cde20, 0x00000000032cdf10]
+Event: 1.304 Thread 0x000000001e85a000 1917       1       org.apache.maven.model.Activation::getProperty (5 bytes)
+Event: 1.304 Thread 0x000000001e85a000 nmethod 1917 0x00000000032da6d0 code [0x00000000032da820, 0x00000000032da930]
+Event: 1.305 Thread 0x000000001e84d000 nmethod 1887 0x00000000032e2950 code [0x00000000032e2b80, 0x00000000032e3e60]
+Event: 1.307 Thread 0x000000001e848800 1918       4       java.util.regex.Pattern$7::isSatisfiedBy (28 bytes)
+Event: 1.307 Thread 0x000000001e85a000 1919       3       org.apache.maven.model.ModelBase::getRepositories (23 bytes)
+Event: 1.307 Thread 0x000000001e85a000 nmethod 1919 0x00000000032da010 code [0x00000000032da180, 0x00000000032da530]
+Event: 1.310 Thread 0x000000001e85a000 1920  s    3       java.util.Hashtable::putAll (52 bytes)
+Event: 1.310 Thread 0x000000001e85a000 nmethod 1920 0x00000000032e5390 code [0x00000000032e5580, 0x00000000032e5f28]
+Event: 1.310 Thread 0x000000001e848800 nmethod 1918 0x00000000032e6250 code [0x00000000032e6400, 0x00000000032e6958]
+Event: 1.310 Thread 0x000000001e85a000 1921       3       org.apache.maven.model.Contributor::setLocation (35 bytes)
+Event: 1.310 Thread 0x000000001e85a000 nmethod 1921 0x00000000032e2110 code [0x00000000032e22a0, 0x00000000032e2748]
+Event: 1.311 Thread 0x000000001e85a000 1922       3       java.util.Collections$UnmodifiableCollection::iterator (9 bytes)
+Event: 1.311 Thread 0x000000001e84a000 1924       4       org.codehaus.plexus.interpolation.util.ValueSourceUtils::trimPrefix (88 bytes)
+Event: 1.311 Thread 0x000000001e85a000 nmethod 1922 0x00000000032d9910 code [0x00000000032d9a80, 0x00000000032d9de8]
+Event: 1.311 Thread 0x000000001e85a000 1923       3       java.util.Collections$UnmodifiableCollection$1::<init> (26 bytes)
+Event: 1.311 Thread 0x000000001e85a000 nmethod 1923 0x00000000032e1bd0 code [0x00000000032e1d40, 0x00000000032e2008]
+Event: 1.311 Thread 0x000000001e84d000 1925       4       org.apache.maven.model.interpolation.StringSearchModelInterpolator$InterpolateObjectAction$ObjectField::doInterpolate (38 bytes)
+Event: 1.311 Thread 0x000000001e848800 1926       4       java.util.LinkedList::linkLast (59 bytes)
+Event: 1.312 Thread 0x000000001e85a000 1929       3       java.lang.String::<init> (15 bytes)
+Event: 1.312 Thread 0x000000001e85a000 nmethod 1929 0x00000000032dff90 code [0x00000000032e0120, 0x00000000032e0508]
+Event: 1.312 Thread 0x000000001e848800 nmethod 1926 0x00000000032dfc50 code [0x00000000032dfda0, 0x00000000032dfef8]
+Event: 1.312 Thread 0x000000001e848800 1927   !   4       org.apache.maven.model.interpolation.StringSearchModelInterpolator$InterpolateObjectAction$ListField::doInterpolate (139 bytes)
+Event: 1.315 Thread 0x000000001e85a000 1930       1       org.apache.maven.model.building.DefaultModelBuildingRequest::getModelCache (5 bytes)
+Event: 1.315 Thread 0x000000001e85a000 nmethod 1930 0x00000000032df990 code [0x00000000032dfae0, 0x00000000032dfbf0]
+Event: 1.315 Thread 0x000000001e85a000 1931       3       org.codehaus.plexus.interpolation.AbstractValueSource::<init> (28 bytes)
+Event: 1.316 Thread 0x000000001e85a000 nmethod 1931 0x00000000032df210 code [0x00000000032df3a0, 0x00000000032df7b0]
+Event: 1.316 Thread 0x000000001e84d000 nmethod 1925 0x00000000032e7f90 code [0x00000000032e8120, 0x00000000032e8528]
+Event: 1.316 Thread 0x000000001e84d000 1932       4       org.apache.maven.model.Dependency::getManagementKey (94 bytes)
+Event: 1.317 Thread 0x000000001e85a000 1934       1       java.util.Collections::emptyMap (4 bytes)
+Event: 1.317 Thread 0x000000001e85a000 nmethod 1934 0x00000000032def90 code [0x00000000032df0e0, 0x00000000032df1d0]
+Event: 1.319 Thread 0x000000001e84a000 nmethod 1924 0x00000000032e7190 code [0x00000000032e7300, 0x00000000032e7938]
+Event: 1.319 Thread 0x000000001e84a000 1933       4       java.util.HashMap::<init> (11 bytes)
+Event: 1.319 Thread 0x000000001e84a000 nmethod 1933 0x00000000032bea10 code [0x00000000032beb40, 0x00000000032beb98]
+Event: 1.319 Thread 0x000000001e84a000 1935       4       java.util.regex.Pattern$LastNode::match (45 bytes)
+Event: 1.319 Thread 0x000000001e85a000 1938   !   3       org.apache.maven.model.Exclusion::clone (73 bytes)
+Event: 1.319 Thread 0x000000001e84a000 nmethod 1935 0x00000000032dec50 code [0x00000000032deda0, 0x00000000032dee78]
+Event: 1.319 Thread 0x000000001e84a000 1936   !   4       java.util.regex.Pattern::matcher (44 bytes)
+Event: 1.320 Thread 0x000000001e848800 nmethod 1927 0x00000000032e9290 code [0x00000000032e9440, 0x00000000032e9bb0]
+Event: 1.320 Thread 0x000000001e848800 1937       4       java.util.regex.Matcher::<init> (84 bytes)
+Event: 1.320 Thread 0x000000001e85a000 nmethod 1938 0x00000000032ea950 code [0x00000000032eaba0, 0x00000000032ebb78]
+Event: 1.323 Thread 0x000000001e848800 nmethod 1937 0x00000000032e8b10 code [0x00000000032e8c60, 0x00000000032e9018]
+Event: 1.323 Thread 0x000000001e848800 1939       4       org.apache.maven.model.validation.DefaultModelValidator::validateStringNotEmpty (46 bytes)
+Event: 1.324 Thread 0x000000001e848800 nmethod 1939 0x00000000032ea610 code [0x00000000032ea740, 0x00000000032ea7f8]
+Event: 1.324 Thread 0x000000001e848800 1940       4       org.apache.maven.model.validation.DefaultModelValidator::validateId (79 bytes)
+Event: 1.324 Thread 0x000000001e84a000 nmethod 1936 0x00000000032ed410 code [0x00000000032ed580, 0x00000000032ed9d8]
+Event: 1.324 Thread 0x000000001e84a000 1928       4       java.util.AbstractCollection::isEmpty (13 bytes)
+Event: 1.325 Thread 0x000000001e84a000 nmethod 1928 0x00000000032db390 code [0x00000000032db4c0, 0x00000000032db538]
+Event: 1.326 Thread 0x000000001e84a000 1941       4       java.util.LinkedHashMap$LinkedValueIterator::next (8 bytes)
+Event: 1.326 Thread 0x000000001e84a000 nmethod 1941 0x00000000032edd10 code [0x00000000032ede40, 0x00000000032edf18]
+Event: 1.326 Thread 0x000000001e84a000 1942       4       org.apache.maven.model.merge.MavenModelMerger::getDependencyKey (5 bytes)
+Event: 1.330 Thread 0x000000001e85a000 1945       1       org.apache.maven.model.Dependency::getOptional (5 bytes)
+Event: 1.331 Thread 0x000000001e85a000 nmethod 1945 0x00000000032ed150 code [0x00000000032ed2a0, 0x00000000032ed3b0]
+Event: 1.331 Thread 0x000000001e85a000 1946       3       org.apache.maven.model.validation.DefaultModelValidator::validateBoolean (80 bytes)
+Event: 1.331 Thread 0x000000001e85a000 nmethod 1946 0x00000000032e06d0 code [0x00000000032e08e0, 0x00000000032e1548]
+Event: 1.335 Thread 0x000000001e848800 nmethod 1940 0x00000000032f1b50 code [0x00000000032f1d00, 0x00000000032f2878]
+Event: 1.335 Thread 0x000000001e848800 1944   !   4       org.apache.maven.model.Dependency::clone (137 bytes)
+Event: 1.342 Thread 0x000000001e85a000 1947       3       java.util.regex.Pattern$Node::<init> (12 bytes)
+Event: 1.342 Thread 0x000000001e85a000 nmethod 1947 0x00000000032ecd50 code [0x00000000032ecec0, 0x00000000032ed090]
+Event: 1.343 Thread 0x000000001e85a000 1948       3       com.google.inject.internal.InjectorImpl::getProviderOrThrow (28 bytes)
+Event: 1.343 Thread 0x000000001e85a000 nmethod 1948 0x00000000032ec3d0 code [0x00000000032ec560, 0x00000000032ecaf8]
+Event: 1.343 Thread 0x000000001e85a000 1950       3       java.util.Collections$EmptyMap::entrySet (4 bytes)
+Event: 1.343 Thread 0x000000001e85a000 nmethod 1950 0x00000000032f1390 code [0x00000000032f1500, 0x00000000032f16b0]
+Event: 1.343 Thread 0x000000001e85a000 1953       3       sun.reflect.NativeConstructorAccessorImpl::newInstance (89 bytes)
+Event: 1.344 Thread 0x000000001e85a000 nmethod 1953 0x00000000032ef590 code [0x00000000032ef800, 0x00000000032f0b78]
+Event: 1.344 Thread 0x000000001e85a000 1949       3       com.google.inject.internal.InjectorImpl$2::<init> (20 bytes)
+Event: 1.344 Thread 0x000000001e85a000 nmethod 1949 0x00000000032ef190 code [0x00000000032ef2e0, 0x00000000032ef4d0]
+Event: 1.344 Thread 0x000000001e85a000 1952       3       java.lang.reflect.Constructor::setConstructorAccessor (21 bytes)
+Event: 1.345 Thread 0x000000001e85a000 nmethod 1952 0x00000000032eeb50 code [0x00000000032eecc0, 0x00000000032ef088]
+Event: 1.345 Thread 0x000000001e85a000 1957       3       java.lang.StringBuilder::length (5 bytes)
+Event: 1.345 Thread 0x000000001e85a000 nmethod 1957 0x00000000032ee810 code [0x00000000032ee960, 0x00000000032eead0]
+Event: 1.345 Thread 0x000000001e85a000 1955       1       org.eclipse.sisu.inject.LazyBeanEntry::getKey (5 bytes)
+Event: 1.345 Thread 0x000000001e85a000 nmethod 1955 0x00000000032ee550 code [0x00000000032ee6a0, 0x00000000032ee7b0]
+Event: 1.345 Thread 0x000000001e85a000 1956       1       org.eclipse.sisu.inject.LazyBeanEntry$JsrNamed::value (5 bytes)
+Event: 1.345 Thread 0x000000001e85a000 nmethod 1956 0x00000000032ee290 code [0x00000000032ee3e0, 0x00000000032ee4f0]
+Event: 1.345 Thread 0x000000001e85a000 1958       3       java.lang.Character::isDigit (5 bytes)
+Event: 1.346 Thread 0x000000001e85a000 nmethod 1958 0x00000000032f35d0 code [0x00000000032f3760, 0x00000000032f3ab8]
+Event: 1.346 Thread 0x000000001e85a000 1960       3       java.lang.Integer::stringSize (21 bytes)
+Event: 1.346 Thread 0x000000001e85a000 nmethod 1960 0x00000000032f3c10 code [0x00000000032f3d80, 0x00000000032f3f90]
+Event: 1.346 Thread 0x000000001e85a000 1959       3       java.lang.Character::isDigit (15 bytes)
+Event: 1.346 Thread 0x000000001e85a000 nmethod 1959 0x00000000032f4090 code [0x00000000032f4220, 0x00000000032f4518]
+Event: 1.346 Thread 0x000000001e85a000 1961       3       org.eclipse.sisu.plexus.LazyPlexusBean::getKey (5 bytes)
+Event: 1.346 Thread 0x000000001e85a000 nmethod 1961 0x00000000032f4650 code [0x00000000032f47e0, 0x00000000032f4c48]
+Event: 1.346 Thread 0x000000001e85a000 1963       3       java.math.MutableBigInteger::<init> (21 bytes)
+Event: 1.346 Thread 0x000000001e85a000 nmethod 1963 0x00000000032f4dd0 code [0x00000000032f4f40, 0x00000000032f5130]
+Event: 1.346 Thread 0x000000001e85a000 1962       1       org.apache.maven.model.Dependency::getVersion (5 bytes)
+Event: 1.346 Thread 0x000000001e85a000 nmethod 1962 0x00000000032f5210 code [0x00000000032f5360, 0x00000000032f5470]
+Event: 1.347 Thread 0x000000001e85a000 1965       3       java.lang.StringBuilder::append (9 bytes)
+Event: 1.347 Thread 0x000000001e85a000 nmethod 1965 0x00000000032f54d0 code [0x00000000032f5660, 0x00000000032f5a58]
+Event: 1.347 Thread 0x000000001e85a000 1967       3       org.apache.maven.artifact.versioning.ComparableVersion::parseItem (25 bytes)
+Event: 1.347 Thread 0x000000001e85a000 nmethod 1967 0x00000000032f9410 code [0x00000000032f95a0, 0x00000000032f99f8]
+Event: 1.347 Thread 0x000000001e85a000 1968       3       java.math.MutableBigInteger::toBigInteger (28 bytes)
+Event: 1.348 Thread 0x000000001e848800 nmethod 1944 0x00000000032f9c10 code [0x00000000032f9de0, 0x00000000032faa38]
+Event: 1.348 Thread 0x000000001e85a000 nmethod 1968 0x00000000032f8f10 code [0x00000000032f9080, 0x00000000032f9338]
+Event: 1.348 Thread 0x000000001e85a000 1969       3       java.math.BigInteger::getInt (63 bytes)
+Event: 1.348 Thread 0x000000001e848800 1943       4       org.apache.maven.model.validation.DefaultModelValidator::validateEffectiveDependency (726 bytes)
+Event: 1.348 Thread 0x000000001e85a000 nmethod 1969 0x00000000032f8890 code [0x00000000032f8a20, 0x00000000032f8e08]
+Event: 1.348 Thread 0x000000001e85a000 1966       1       org.apache.maven.artifact.versioning.VersionRange::getRecommendedVersion (5 bytes)
+Event: 1.348 Thread 0x000000001e85a000 nmethod 1966 0x00000000032f85d0 code [0x00000000032f8720, 0x00000000032f8830]
+Event: 1.348 Thread 0x000000001e85a000 1971       3       org.apache.maven.artifact.versioning.ComparableVersion$IntegerItem::toString (8 bytes)
+Event: 1.348 Thread 0x000000001e85a000 nmethod 1971 0x00000000032f8150 code [0x00000000032f82c0, 0x00000000032f84e8]
+Event: 1.348 Thread 0x000000001e85a000 1974       3       java.util.StringTokenizer::<init> (8 bytes)
+Event: 1.348 Thread 0x000000001e85a000 nmethod 1974 0x00000000032f7dd0 code [0x00000000032f7f40, 0x00000000032f80c8]
+Event: 1.348 Thread 0x000000001e85a000 1972       3       java.math.BigInteger::toString (7 bytes)
+Event: 1.348 Thread 0x000000001e85a000 nmethod 1972 0x00000000032f7a50 code [0x00000000032f7bc0, 0x00000000032f7d48]
+Event: 1.348 Thread 0x000000001e85a000 1973       3       java.math.BigInteger::toString (89 bytes)
+Event: 1.349 Thread 0x000000001e85a000 nmethod 1973 0x00000000032f6b50 code [0x00000000032f6d60, 0x00000000032f76b8]
+Event: 1.349 Thread 0x000000001e85a000 1975       3       java.math.BigInteger::<init> (404 bytes)
+Event: 1.351 Thread 0x000000001e85a000 nmethod 1975 0x00000000032fb690 code [0x00000000032fba40, 0x00000000032fd7b8]
+Event: 1.351 Thread 0x000000001e85a000 1977       3       java.lang.Long::stringSize (38 bytes)
+Event: 1.351 Thread 0x000000001e85a000 nmethod 1977 0x00000000032f66d0 code [0x00000000032f6840, 0x00000000032f6a90]
+Event: 1.351 Thread 0x000000001e85a000 1978       3       java.lang.Long::getChars (221 bytes)
+Event: 1.351 Thread 0x000000001e85a000 nmethod 1978 0x00000000032fee90 code [0x00000000032ff060, 0x00000000032ff6d0]
+Event: 1.351 Thread 0x000000001e85a000 1982       3       org.apache.maven.model.Dependency::getExclusions (23 bytes)
+Event: 1.352 Thread 0x000000001e85a000 nmethod 1982 0x00000000032f6010 code [0x00000000032f6180, 0x00000000032f6530]
+Event: 1.352 Thread 0x000000001e85a000 1981       3       java.math.BigInteger::<init> (38 bytes)
+Event: 1.352 Thread 0x000000001e85a000 nmethod 1981 0x00000000032ffe50 code [0x0000000003300000, 0x0000000003300528]
+Event: 1.352 Thread 0x000000001e85a000 1980       3       java.math.MutableBigInteger::getMagnitudeArray (45 bytes)
+Event: 1.352 Thread 0x000000001e85a000 nmethod 1980 0x0000000003300790 code [0x0000000003300900, 0x0000000003300b48]
+Event: 1.352 Thread 0x000000001e85a000 1986       3       java.lang.Integer::valueOf (10 bytes)
+Event: 1.352 Thread 0x000000001e85a000 nmethod 1986 0x0000000003300c10 code [0x0000000003300da0, 0x0000000003301188]
+Event: 1.352 Thread 0x000000001e85a000 1989       3       java.math.BigInteger::smallToString (272 bytes)
+Event: 1.354 Thread 0x000000001e85a000 nmethod 1989 0x00000000033013d0 code [0x0000000003301780, 0x0000000003303878]
+Event: 1.354 Thread 0x000000001e85a000 1992       3       java.math.BigInteger::abs (16 bytes)
+Event: 1.355 Thread 0x000000001e85a000 nmethod 1992 0x0000000003305250 code [0x00000000033053c0, 0x0000000003305688]
+Event: 1.355 Thread 0x000000001e85a000 1993       3       java.math.MutableBigInteger::<init> (22 bytes)
+Event: 1.355 Thread 0x000000001e85a000 nmethod 1993 0x0000000003305790 code [0x0000000003305900, 0x0000000003305b70]
+Event: 1.355 Thread 0x000000001e85a000 1991   !   3       org.apache.maven.artifact.versioning.DefaultArtifactVersion::getNextIntegerToken (70 bytes)
+Event: 1.355 Thread 0x000000001e85a000 nmethod 1991 0x0000000003305c50 code [0x0000000003305ea0, 0x0000000003306c38]
+Event: 1.355 Thread 0x000000001e85a000 1987       3       java.lang.Long::toString (129 bytes)
+Event: 1.356 Thread 0x000000001e85a000 nmethod 1987 0x0000000003307390 code [0x0000000003307540, 0x0000000003307b78]
+Event: 1.356 Thread 0x000000001e85a000 1988       3       java.lang.Long::toString (52 bytes)
+Event: 1.356 Thread 0x000000001e85a000 nmethod 1988 0x0000000003307e90 code [0x0000000003308040, 0x0000000003308488]
+Event: 1.356 Thread 0x000000001e85a000 1990       3       java.math.BigInteger::trustedStripLeadingZeroInts (37 bytes)
+Event: 1.356 Thread 0x000000001e85a000 nmethod 1990 0x0000000003309b10 code [0x0000000003309c80, 0x0000000003309f28]
+Event: 1.356 Thread 0x000000001e85a000 1994       3       java.math.MutableBigInteger::divide (8 bytes)
+Event: 1.356 Thread 0x000000001e85a000 nmethod 1994 0x00000000032f5bd0 code [0x00000000032f5d40, 0x00000000032f5ec8]
+Event: 1.356 Thread 0x000000001e85a000 1996       3       java.math.MutableBigInteger::divide (38 bytes)
+Event: 1.357 Thread 0x000000001e85a000 nmethod 1996 0x000000000330d690 code [0x000000000330d800, 0x000000000330da58]
+Event: 1.357 Thread 0x000000001e85a000 1997       3       java.math.MutableBigInteger::divideKnuth (272 bytes)
+Event: 1.358 Thread 0x000000001e85a000 nmethod 1997 0x00000000033128d0 code [0x0000000003312be0, 0x0000000003313f98]
+Event: 1.358 Thread 0x000000001e84d000 nmethod 1932 0x00000000033149d0 code [0x0000000003314be0, 0x0000000003316b38]
+Event: 1.358 Thread 0x000000001e85a000 1998       3       java.math.MutableBigInteger::compare (106 bytes)
+Event: 1.358 Thread 0x000000001e84d000 1964       4       java.lang.String::lastIndexOf (13 bytes)
+Event: 1.358 Thread 0x000000001e85a000 nmethod 1998 0x00000000033093d0 code [0x0000000003309560, 0x0000000003309910]
+Event: 1.358 Thread 0x000000001e85a000 1999       3       java.math.MutableBigInteger::<init> (42 bytes)
+Event: 1.358 Thread 0x000000001e84a000 nmethod 1942 0x0000000003318850 code [0x0000000003318a60, 0x000000000331ab98]
+Event: 1.358 Thread 0x000000001e84a000 1970       4       java.util.HashSet::contains (9 bytes)
+Event: 1.359 Thread 0x000000001e85a000 nmethod 1999 0x0000000003308f10 code [0x0000000003309080, 0x00000000033092c8]
+Event: 1.359 Thread 0x000000001e85a000 2000       3       java.util.Arrays::copyOfRange (63 bytes)
+Event: 1.359 Thread 0x000000001e85a000 nmethod 2000 0x000000000330c410 code [0x000000000330c620, 0x000000000330d158]
+Event: 1.359 Thread 0x000000001e85a000 2002  s    3       java.util.Vector::isEmpty (13 bytes)
+Event: 1.359 Thread 0x000000001e85a000 nmethod 2002 0x00000000033089d0 code [0x0000000003308b40, 0x0000000003308e50]
+Event: 1.359 Thread 0x000000001e85a000 1979       1       org.eclipse.sisu.wire.EntryMapAdapter::entrySet (5 bytes)
+Event: 1.359 Thread 0x000000001e85a000 nmethod 1979 0x0000000003308710 code [0x0000000003308860, 0x0000000003308970]
+Event: 1.359 Thread 0x000000001e85a000 1983       1       org.apache.maven.artifact.versioning.ComparableVersion::toString (5 bytes)
+Event: 1.359 Thread 0x000000001e85a000 nmethod 1983 0x000000000330c150 code [0x000000000330c2a0, 0x000000000330c3b0]
+Event: 1.359 Thread 0x000000001e85a000 1984       1       org.apache.maven.artifact.handler.DefaultArtifactHandler::getClassifier (5 bytes)
+Event: 1.359 Thread 0x000000001e85a000 nmethod 1984 0x000000000330be90 code [0x000000000330bfe0, 0x000000000330c0f0]
+Event: 1.359 Thread 0x000000001e85a000 1985       1       org.apache.maven.model.Dependency::getClassifier (5 bytes)
+Event: 1.360 Thread 0x000000001e85a000 nmethod 1985 0x000000000330bbd0 code [0x000000000330bd20, 0x000000000330be30]
+Event: 1.360 Thread 0x000000001e85a000 2003       3       java.util.regex.Pattern$Begin::match (62 bytes)
+Event: 1.360 Thread 0x000000001e85a000 nmethod 2003 0x000000000330b550 code [0x000000000330b6c0, 0x000000000330ba48]
+Event: 1.360 Thread 0x000000001e85a000 2004       3       java.util.Vector::<init> (7 bytes)
+Event: 1.360 Thread 0x000000001e85a000 nmethod 2004 0x000000000330b110 code [0x000000000330b280, 0x000000000330b488]
+Event: 1.360 Thread 0x000000001e85a000 2005       3       java.util.Vector::<init> (7 bytes)
+Event: 1.360 Thread 0x000000001e85a000 nmethod 2005 0x000000000330ad90 code [0x000000000330af00, 0x000000000330b088]
+Event: 1.360 Thread 0x000000001e85a000 2010       3       org.apache.maven.artifact.versioning.ComparableVersion::parseVersion (389 bytes)
+Event: 1.360 Thread 0x000000001e84d000 nmethod 1964 0x000000000330aa10 code [0x000000000330ab40, 0x000000000330ac98]
+Event: 1.360 Thread 0x000000001e84d000 2011       4       org.eclipse.sisu.inject.LocatedBeans$Itr::hasNext (161 bytes)
+Event: 1.363 Thread 0x000000001e84a000 nmethod 1970 0x000000000330eb10 code [0x000000000330eca0, 0x000000000330f1b8]
+Event: 1.363 Thread 0x000000001e84a000 2009       4       org.eclipse.sisu.inject.RankedSequence$Itr::hasNext (114 bytes)
+Event: 1.366 Thread 0x000000001e85a000 nmethod 2010 0x000000000331cb90 code [0x000000000331d4a0, 0x0000000003324828]
+Event: 1.366 Thread 0x000000001e85a000 2014       3       java.util.AbstractMap::get (96 bytes)
+Event: 1.367 Thread 0x000000001e85a000 nmethod 2014 0x0000000003311550 code [0x00000000033117a0, 0x0000000003312548]
+Event: 1.367 Thread 0x000000001e85a000 2017       3       org.apache.maven.artifact.versioning.ComparableVersion$ListItem::toString (72 bytes)
+Event: 1.367 Thread 0x000000001e85a000 nmethod 2017 0x0000000003329490 code [0x0000000003329720, 0x000000000332acf8]
+Event: 1.367 Thread 0x000000001e85a000 2016       3       org.apache.maven.artifact.versioning.ComparableVersion$ListItem::normalize (55 bytes)
+Event: 1.368 Thread 0x000000001e84a000 nmethod 2009 0x000000000330f8d0 code [0x000000000330fa20, 0x000000000330fd38]
+Event: 1.368 Thread 0x000000001e84a000 2021       4       org.eclipse.sisu.plexus.RealmFilteredBeans$FilteredItr::hasNext (81 bytes)
+Event: 1.368 Thread 0x000000001e85a000 nmethod 2016 0x000000000330db50 code [0x000000000330dd40, 0x000000000330e758]
+Event: 1.368 Thread 0x000000001e85a000 2008       3       java.lang.Integer::getChars (131 bytes)
+Event: 1.368 Thread 0x000000001e85a000 nmethod 2008 0x0000000003310b10 code [0x0000000003310ca0, 0x0000000003311110]
+Event: 1.368 Thread 0x000000001e85a000 2007       3       java.util.regex.Pattern$Node::study (21 bytes)
+Event: 1.368 Thread 0x000000001e85a000 nmethod 2007 0x000000000330a550 code [0x000000000330a6c0, 0x000000000330a928]
+Event: 1.368 Thread 0x000000001e85a000 2019       3       org.apache.maven.artifact.versioning.ComparableVersion$ListItem::<init> (5 bytes)
+Event: 1.368 Thread 0x000000001e85a000 nmethod 2019 0x0000000003310450 code [0x00000000033105e0, 0x0000000003310930]
+Event: 1.368 Thread 0x000000001e85a000 2020       3       org.apache.maven.artifact.versioning.ComparableVersion$ListItem::<init> (5 bytes)
+Event: 1.368 Thread 0x000000001e85a000 nmethod 2020 0x000000000332cb10 code [0x000000000332cc80, 0x000000000332cf70]
+Event: 1.368 Thread 0x000000001e85a000 2012       3       java.util.regex.Pattern$TreeInfo::reset (21 bytes)
+Event: 1.368 Thread 0x000000001e85a000 nmethod 2012 0x0000000003310050 code [0x00000000033101a0, 0x0000000003310310]
+Event: 1.368 Thread 0x000000001e85a000 2013       3       java.util.regex.Pattern::nextEscaped (19 bytes)
+Event: 1.369 Thread 0x000000001e85a000 nmethod 2013 0x000000000330a190 code [0x000000000330a2e0, 0x000000000330a470]
+Event: 1.369 Thread 0x000000001e85a000 2006       3       java.util.Vector::<init> (49 bytes)
+Event: 1.369 Thread 0x000000001e85a000 nmethod 2006 0x000000000332ba90 code [0x000000000332bc80, 0x000000000332c678]
+Event: 1.369 Thread 0x000000001e85a000 2022       3       java.util.Stack::<init> (5 bytes)
+Event: 1.369 Thread 0x000000001e85a000 nmethod 2022 0x000000000332d0d0 code [0x000000000332d240, 0x000000000332d4a8]
+Event: 1.369 Thread 0x000000001e85a000 2025       3       org.apache.maven.artifact.versioning.ComparableVersion$IntegerItem::isNull (11 bytes)
+Event: 1.369 Thread 0x000000001e85a000 nmethod 2025 0x000000000332b6d0 code [0x000000000332b840, 0x000000000332b9e8]
+Event: 1.369 Thread 0x000000001e85a000 2026       3       java.math.BigInteger::equals (91 bytes)
+Event: 1.369 Thread 0x000000001e85a000 nmethod 2026 0x000000000332d5d0 code [0x000000000332d760, 0x000000000332dcf0]
+Event: 1.369 Thread 0x000000001e85a000 2023       1       org.apache.maven.artifact.versioning.ComparableVersion$StringItem::toString (5 bytes)
+Event: 1.369 Thread 0x000000001e85a000 nmethod 2023 0x000000000332de90 code [0x000000000332dfe0, 0x000000000332e0f0]
+Event: 1.369 Thread 0x000000001e85a000 2027       3       org.eclipse.sisu.plexus.PlexusPropertyBinder::bindProperty (143 bytes)
+Event: 1.370 Thread 0x000000001e85a000 nmethod 2027 0x000000000332e150 code [0x000000000332e3a0, 0x000000000332f358]
+Event: 1.370 Thread 0x000000001e85a000 2029       3       org.eclipse.sisu.wire.EntryMapAdapter$EntrySet::iterator (10 bytes)
+Event: 1.370 Thread 0x000000001e85a000 nmethod 2029 0x000000000332fa10 code [0x000000000332fb80, 0x000000000332fda8]
+Event: 1.370 Thread 0x000000001e85a000 2028       1       com.google.common.collect.LinkedHashMultimap$ValueEntry::getSuccessorInValueSet (5 bytes)
+Event: 1.370 Thread 0x000000001e85a000 nmethod 2028 0x000000000332fe50 code [0x000000000332ffa0, 0x00000000033300b0]
+Event: 1.370 Thread 0x000000001e85a000 2031       3       org.apache.maven.artifact.versioning.DefaultArtifactVersion::<init> (10 bytes)
+Event: 1.370 Thread 0x000000001e85a000 nmethod 2031 0x0000000003330110 code [0x0000000003330280, 0x00000000033304e8]
+Event: 1.370 Thread 0x000000001e85a000 2032   !   3       org.apache.maven.artifact.versioning.DefaultArtifactVersion::parseVersion (305 bytes)
+Event: 1.372 Thread 0x000000001e85a000 nmethod 2032 0x00000000033305d0 code [0x00000000033309c0, 0x00000000033330e8]
+Event: 1.372 Thread 0x000000001e85a000 2045   !   3       org.apache.maven.bridge.MavenRepositorySystem::createDependencyArtifact (202 bytes)
+Event: 1.375 Thread 0x000000001e85a000 nmethod 2045 0x0000000003334590 code [0x0000000003334a60, 0x00000000033378c8]
+Event: 1.375 Thread 0x000000001e85a000 2033       3       org.apache.maven.artifact.versioning.ComparableVersion::<init> (10 bytes)
+Event: 1.375 Thread 0x000000001e85a000 nmethod 2033 0x0000000003339590 code [0x0000000003339700, 0x0000000003339968]
+Event: 1.375 Thread 0x000000001e85a000 2049       3       java.util.regex.Pattern::unread (11 bytes)
+Event: 1.375 Thread 0x000000001e85a000 nmethod 2049 0x0000000003339a50 code [0x0000000003339ba0, 0x0000000003339cf0]
+Event: 1.375 Thread 0x000000001e85a000 2035       3       org.apache.maven.bridge.MavenRepositorySystem::XcreateArtifact (138 bytes)
+Event: 1.375 Thread 0x000000001e85a000 nmethod 2035 0x0000000003339d50 code [0x0000000003339f60, 0x000000000333aa28]
+Event: 1.375 Thread 0x000000001e85a000 2036       3       org.apache.maven.artifact.handler.manager.DefaultArtifactHandlerManager::getArtifactHandler (47 bytes)
+Event: 1.375 Thread 0x000000001e85a000 nmethod 2036 0x000000000333ad50 code [0x000000000333af00, 0x000000000333b5b8]
+Event: 1.375 Thread 0x000000001e85a000 2037       3       org.apache.maven.artifact.DefaultArtifact::<init> (72 bytes)
+Event: 1.376 Thread 0x000000001e85a000 nmethod 2037 0x000000000333b790 code [0x000000000333b920, 0x000000000333bd58]
+Event: 1.376 Thread 0x000000001e85a000 2038       3       org.apache.maven.artifact.DefaultArtifact::selectVersionFromNewRangeIfAvailable (45 bytes)
+Event: 1.376 Thread 0x000000001e85a000 nmethod 2038 0x000000000333bf10 code [0x000000000333c0a0, 0x000000000333c498]
+Event: 1.376 Thread 0x000000001e85a000 2034       3       org.apache.maven.artifact.versioning.VersionRange::<init> (15 bytes)
+Event: 1.376 Thread 0x000000001e85a000 nmethod 2034 0x000000000333c5d0 code [0x000000000333c720, 0x000000000333c910]
+Event: 1.376 Thread 0x000000001e85a000 2046       3       org.apache.maven.model.Dependency::isOptional (19 bytes)
+Event: 1.376 Thread 0x000000001e85a000 nmethod 2046 0x000000000333c9d0 code [0x000000000333cb40, 0x000000000333cea8]
+Event: 1.376 Thread 0x000000001e85a000 2047       3       org.apache.maven.bridge.MavenRepositorySystem::XcreateDependencyArtifact (17 bytes)
+Event: 1.376 Thread 0x000000001e85a000 nmethod 2047 0x000000000333cf90 code [0x000000000333d100, 0x000000000333d2a8]
+Event: 1.376 Thread 0x000000001e85a000 2039       3       org.apache.maven.artifact.versioning.DefaultArtifactVersion::toString (8 bytes)
+Event: 1.376 Thread 0x000000001e85a000 nmethod 2039 0x000000000333d350 code [0x000000000333d4a0, 0x000000000333d610]
+Event: 1.376 Thread 0x000000001e85a000 2040       3       org.apache.maven.artifact.DefaultArtifact::selectVersion (11 bytes)
+Event: 1.376 Thread 0x000000001e85a000 nmethod 2040 0x000000000333d6d0 code [0x000000000333d840, 0x000000000333d9e8]
+Event: 1.376 Thread 0x000000001e85a000 2041       3       org.apache.maven.artifact.DefaultArtifact::setBaseVersionInternal (56 bytes)
+Event: 1.377 Thread 0x000000001e85a000 nmethod 2041 0x000000000333da90 code [0x000000000333dca0, 0x000000000333e8e8]
+Event: 1.377 Thread 0x000000001e85a000 2042       3       org.apache.maven.artifact.DefaultArtifact::validateIdentity (144 bytes)
+Event: 1.377 Thread 0x000000001e85a000 nmethod 2042 0x000000000333ed50 code [0x000000000333ef60, 0x000000000333f908]
+Event: 1.377 Thread 0x000000001e85a000 2043       3       org.apache.maven.artifact.DefaultArtifact::empty (21 bytes)
+Event: 1.377 Thread 0x000000001e85a000 nmethod 2043 0x000000000333fc90 code [0x000000000333fe00, 0x0000000003340188]
+Event: 1.377 Thread 0x000000001e85a000 2044       3       org.apache.maven.artifact.versioning.VersionRange::createFromVersionSpec (324 bytes)
+
+GC Heap History (2 events):
+Event: 0.746 GC heap before
+{Heap before GC invocations=1 (full 0):
+ PSYoungGen      total 75776K, used 65024K [0x000000076b800000, 0x0000000770c80000, 0x00000007c0000000)
+  eden space 65024K, 100% used [0x000000076b800000,0x000000076f780000,0x000000076f780000)
+  from space 10752K, 0% used [0x0000000770200000,0x0000000770200000,0x0000000770c80000)
+  to   space 10752K, 0% used [0x000000076f780000,0x000000076f780000,0x0000000770200000)
+ ParOldGen       total 173568K, used 0K [0x00000006c2800000, 0x00000006cd180000, 0x000000076b800000)
+  object space 173568K, 0% used [0x00000006c2800000,0x00000006c2800000,0x00000006cd180000)
+ Metaspace       used 10995K, capacity 11294K, committed 11520K, reserved 1058816K
+  class space    used 1356K, capacity 1447K, committed 1536K, reserved 1048576K
+Event: 0.753 GC heap after
+Heap after GC invocations=1 (full 0):
+ PSYoungGen      total 75776K, used 8940K [0x000000076b800000, 0x0000000770c80000, 0x00000007c0000000)
+  eden space 65024K, 0% used [0x000000076b800000,0x000000076b800000,0x000000076f780000)
+  from space 10752K, 83% used [0x000000076f780000,0x000000077003b170,0x0000000770200000)
+  to   space 10752K, 0% used [0x0000000770200000,0x0000000770200000,0x0000000770c80000)
+ ParOldGen       total 173568K, used 16K [0x00000006c2800000, 0x00000006cd180000, 0x000000076b800000)
+  object space 173568K, 0% used [0x00000006c2800000,0x00000006c2804000,0x00000006cd180000)
+ Metaspace       used 10995K, capacity 11294K, committed 11520K, reserved 1058816K
+  class space    used 1356K, capacity 1447K, committed 1536K, reserved 1048576K
+}
+
+Deoptimization events (23 events):
+Event: 0.444 Thread 0x0000000000fc0000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000002e11328 method=org.codehaus.plexus.util.xml.pull.MXParser.more()C @ 8
+Event: 0.505 Thread 0x0000000000fc0000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000002f0631c method=org.codehaus.plexus.util.xml.pull.MXParser.nextImpl()I @ 241
+Event: 0.514 Thread 0x0000000000fc0000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000002f0f970 method=org.codehaus.plexus.util.xml.pull.MXParser.isWhitespace()Z @ 20
+Event: 0.519 Thread 0x0000000000fc0000 Uncommon trap: reason=range_check action=make_not_entrant pc=0x0000000002eb3468 method=sun.reflect.generics.parser.SignatureParser.current()C @ 34
+Event: 0.589 Thread 0x0000000000fc0000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000002ea49a4 method=java.util.HashMap.getNode(ILjava/lang/Object;)Ljava/util/HashMap$Node; @ 129
+Event: 0.589 Thread 0x0000000000fc0000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000002e9f684 method=java.util.HashMap.getNode(ILjava/lang/Object;)Ljava/util/HashMap$Node; @ 129
+Event: 0.625 Thread 0x0000000000fc0000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000002f4b934 method=java.lang.String.lastIndexOf([CII[CIII)I @ 118
+Event: 0.845 Thread 0x0000000000fc0000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x0000000002f95930 method=java.util.HashMap.putVal(ILjava/lang/Object;Ljava/lang/Object;ZZ)Ljava/lang/Object; @ 203
+Event: 0.845 Thread 0x0000000000fc0000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x0000000002f95930 method=java.util.HashMap.putVal(ILjava/lang/Object;Ljava/lang/Object;ZZ)Ljava/lang/Object; @ 203
+Event: 0.869 Thread 0x0000000000fc0000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000002fc44e4 method=java.util.concurrent.ConcurrentHashMap.putVal(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object; @ 206
+Event: 0.892 Thread 0x0000000000fc0000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x0000000002f95930 method=java.util.HashMap.putVal(ILjava/lang/Object;Ljava/lang/Object;ZZ)Ljava/lang/Object; @ 203
+Event: 0.893 Thread 0x0000000000fc0000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x0000000002f95930 method=java.util.HashMap.putVal(ILjava/lang/Object;Ljava/lang/Object;ZZ)Ljava/lang/Object; @ 203
+Event: 0.893 Thread 0x0000000000fc0000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x0000000002fa3a68 method=java.util.HashMap.putVal(ILjava/lang/Object;Ljava/lang/Object;ZZ)Ljava/lang/Object; @ 203
+Event: 0.966 Thread 0x0000000000fc0000 Uncommon trap: reason=null_check action=make_not_entrant pc=0x0000000002d5c8bc method=java.lang.String.equals(Ljava/lang/Object;)Z @ 8
+Event: 0.975 Thread 0x0000000000fc0000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000002f50860 method=org.codehaus.plexus.util.xml.pull.MXParser.parseStartTag()I @ 443
+Event: 1.012 Thread 0x0000000000fc0000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000002eba07c method=sun.nio.cs.UTF_8$Decoder.decode([BII[C)I @ 30
+Event: 1.017 Thread 0x0000000000fc0000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000002ec8d64 method=sun.nio.cs.UTF_8$Decoder.decodeArrayLoop(Ljava/nio/ByteBuffer;Ljava/nio/CharBuffer;)Ljava/nio/charset/CoderResult; @ 84
+Event: 1.037 Thread 0x0000000000fc0000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000002e2c7b8 method=java.lang.String.replace(CC)Ljava/lang/String; @ 2
+Event: 1.088 Thread 0x0000000000fc0000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00000000031c7a84 method=org.codehaus.plexus.util.xml.pull.MXParser.nextImpl()I @ 879
+Event: 1.124 Thread 0x0000000000fc0000 Uncommon trap: reason=null_check action=make_not_entrant pc=0x000000000320ef28 method=org.apache.maven.model.io.xpp3.MavenXpp3ReaderEx.checkFieldWithDuplicate(Lorg/codehaus/plexus/util/xml/pull/XmlPullParser;Ljava/lang/String;Ljava/lang/String;Ljava/util/
+Event: 1.134 Thread 0x0000000000fc0000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x000000000321cf74 method=org.codehaus.plexus.util.xml.pull.MXParser.nextImpl()I @ 310
+Event: 1.209 Thread 0x0000000000fc0000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000003226e60 method=org.codehaus.plexus.util.xml.pull.MXParser.isS(C)Z @ 21
+Event: 1.209 Thread 0x0000000000fc0000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000003148a68 method=org.codehaus.plexus.util.xml.pull.MXParser.isS(C)Z @ 21
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (43 events):
+Event: 0.026 Thread 0x0000000000fc0000 Exception <a 'java/lang/NoSuchMethodError': Method sun.misc.Unsafe.defineClass(Ljava/lang/String;[BII)Ljava/lang/Class; name or signature does not match> (0x000000076b807cb8) thrown at [D:\jenkins\workspace\JDK8u-WIN64\open_source\openjdk\OpenJDK\hotspot\
+Event: 0.026 Thread 0x0000000000fc0000 Exception <a 'java/lang/NoSuchMethodError': Method sun.misc.Unsafe.prefetchRead(Ljava/lang/Object;J)V name or signature does not match> (0x000000076b807fa0) thrown at [D:\jenkins\workspace\JDK8u-WIN64\open_source\openjdk\OpenJDK\hotspot\src\share\vm\prims
+Event: 0.082 Thread 0x0000000000fc0000 Exception <a 'java/util/zip/ZipException'> (0x000000076b8bc230) thrown at [D:\jenkins\workspace\JDK8u-WIN64\open_source\openjdk\OpenJDK\hotspot\src\share\vm\prims\jni.cpp, line 710]
+Event: 0.082 Thread 0x0000000000fc0000 Exception <a 'java/security/PrivilegedActionException'> (0x000000076b8bc968) thrown at [D:\jenkins\workspace\JDK8u-WIN64\open_source\openjdk\OpenJDK\hotspot\src\share\vm\prims\jvm.cpp, line 1512]
+Event: 0.082 Thread 0x0000000000fc0000 Exception <a 'java/security/PrivilegedActionException'> (0x000000076b8bcb78) thrown at [D:\jenkins\workspace\JDK8u-WIN64\open_source\openjdk\OpenJDK\hotspot\src\share\vm\prims\jvm.cpp, line 1512]
+Event: 0.083 Thread 0x0000000000fc0000 Exception <a 'java/util/zip/ZipException'> (0x000000076b8be458) thrown at [D:\jenkins\workspace\JDK8u-WIN64\open_source\openjdk\OpenJDK\hotspot\src\share\vm\prims\jni.cpp, line 710]
+Event: 0.083 Thread 0x0000000000fc0000 Exception <a 'java/security/PrivilegedActionException'> (0x000000076b8be660) thrown at [D:\jenkins\workspace\JDK8u-WIN64\open_source\openjdk\OpenJDK\hotspot\src\share\vm\prims\jvm.cpp, line 1512]
+Event: 0.083 Thread 0x0000000000fc0000 Exception <a 'java/security/PrivilegedActionException'> (0x000000076b8be870) thrown at [D:\jenkins\workspace\JDK8u-WIN64\open_source\openjdk\OpenJDK\hotspot\src\share\vm\prims\jvm.cpp, line 1512]
+Event: 0.209 Thread 0x0000000000fc0000 Exception <a 'java/security/PrivilegedActionException'> (0x000000076bed8628) thrown at [D:\jenkins\workspace\JDK8u-WIN64\open_source\openjdk\OpenJDK\hotspot\src\share\vm\prims\jvm.cpp, line 1512]
+Event: 0.209 Thread 0x0000000000fc0000 Exception <a 'java/security/PrivilegedActionException'> (0x000000076bed8a20) thrown at [D:\jenkins\workspace\JDK8u-WIN64\open_source\openjdk\OpenJDK\hotspot\src\share\vm\prims\jvm.cpp, line 1512]
+Event: 0.210 Thread 0x0000000000fc0000 Exception <a 'java/security/PrivilegedActionException'> (0x000000076bedc1e0) thrown at [D:\jenkins\workspace\JDK8u-WIN64\open_source\openjdk\OpenJDK\hotspot\src\share\vm\prims\jvm.cpp, line 1512]
+Event: 0.210 Thread 0x0000000000fc0000 Exception <a 'java/security/PrivilegedActionException'> (0x000000076bedc5d8) thrown at [D:\jenkins\workspace\JDK8u-WIN64\open_source\openjdk\OpenJDK\hotspot\src\share\vm\prims\jvm.cpp, line 1512]
+Event: 0.210 Thread 0x0000000000fc0000 Exception <a 'java/security/PrivilegedActionException'> (0x000000076beddae0) thrown at [D:\jenkins\workspace\JDK8u-WIN64\open_source\openjdk\OpenJDK\hotspot\src\share\vm\prims\jvm.cpp, line 1512]
+Event: 0.210 Thread 0x0000000000fc0000 Exception <a 'java/security/PrivilegedActionException'> (0x000000076bedded8) thrown at [D:\jenkins\workspace\JDK8u-WIN64\open_source\openjdk\OpenJDK\hotspot\src\share\vm\prims\jvm.cpp, line 1512]
+Event: 0.429 Thread 0x0000000000fc0000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x000000076cfeea10) thrown at [D:\jenkins\workspace\JDK8u-WIN64\open_source\openjdk\OpenJDK\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 619]
+Event: 0.430 Thread 0x0000000000fc0000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x000000076cffa8e0) thrown at [D:\jenkins\workspace\JDK8u-WIN64\open_source\openjdk\OpenJDK\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 619]
+Event: 0.434 Thread 0x0000000000fc0000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x000000076d062778) thrown at [D:\jenkins\workspace\JDK8u-WIN64\open_source\openjdk\OpenJDK\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 619]
+Event: 0.435 Thread 0x0000000000fc0000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x000000076d071bb8) thrown at [D:\jenkins\workspace\JDK8u-WIN64\open_source\openjdk\OpenJDK\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 619]
+Event: 0.435 Thread 0x0000000000fc0000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x000000076d0761a8) thrown at [D:\jenkins\workspace\JDK8u-WIN64\open_source\openjdk\OpenJDK\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 619]
+Event: 0.436 Thread 0x0000000000fc0000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x000000076d080ac8) thrown at [D:\jenkins\workspace\JDK8u-WIN64\open_source\openjdk\OpenJDK\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 619]
+Event: 0.436 Thread 0x0000000000fc0000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x000000076d0818a0) thrown at [D:\jenkins\workspace\JDK8u-WIN64\open_source\openjdk\OpenJDK\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 619]
+Event: 0.436 Thread 0x0000000000fc0000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x000000076d082f40) thrown at [D:\jenkins\workspace\JDK8u-WIN64\open_source\openjdk\OpenJDK\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 619]
+Event: 0.436 Thread 0x0000000000fc0000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x000000076d084c58) thrown at [D:\jenkins\workspace\JDK8u-WIN64\open_source\openjdk\OpenJDK\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 619]
+Event: 0.436 Thread 0x0000000000fc0000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x000000076d086f18) thrown at [D:\jenkins\workspace\JDK8u-WIN64\open_source\openjdk\OpenJDK\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 619]
+Event: 0.437 Thread 0x0000000000fc0000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x000000076d091388) thrown at [D:\jenkins\workspace\JDK8u-WIN64\open_source\openjdk\OpenJDK\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 619]
+Event: 0.437 Thread 0x0000000000fc0000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x000000076d092ac8) thrown at [D:\jenkins\workspace\JDK8u-WIN64\open_source\openjdk\OpenJDK\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 619]
+Event: 0.437 Thread 0x0000000000fc0000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x000000076d093900) thrown at [D:\jenkins\workspace\JDK8u-WIN64\open_source\openjdk\OpenJDK\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 619]
+Event: 0.437 Thread 0x0000000000fc0000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x000000076d094690) thrown at [D:\jenkins\workspace\JDK8u-WIN64\open_source\openjdk\OpenJDK\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 619]
+Event: 0.437 Thread 0x0000000000fc0000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x000000076d095fe0) thrown at [D:\jenkins\workspace\JDK8u-WIN64\open_source\openjdk\OpenJDK\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 619]
+Event: 0.437 Thread 0x0000000000fc0000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x000000076d096d80) thrown at [D:\jenkins\workspace\JDK8u-WIN64\open_source\openjdk\OpenJDK\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 619]
+Event: 0.437 Thread 0x0000000000fc0000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x000000076d098b70) thrown at [D:\jenkins\workspace\JDK8u-WIN64\open_source\openjdk\OpenJDK\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 619]
+Event: 0.437 Thread 0x0000000000fc0000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x000000076d09a8f8) thrown at [D:\jenkins\workspace\JDK8u-WIN64\open_source\openjdk\OpenJDK\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 619]
+Event: 0.438 Thread 0x0000000000fc0000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x000000076d09c070) thrown at [D:\jenkins\workspace\JDK8u-WIN64\open_source\openjdk\OpenJDK\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 619]
+Event: 0.438 Thread 0x0000000000fc0000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x000000076d09dac8) thrown at [D:\jenkins\workspace\JDK8u-WIN64\open_source\openjdk\OpenJDK\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 619]
+Event: 0.438 Thread 0x0000000000fc0000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x000000076d09f818) thrown at [D:\jenkins\workspace\JDK8u-WIN64\open_source\openjdk\OpenJDK\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 619]
+Event: 0.438 Thread 0x0000000000fc0000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x000000076d0a0d70) thrown at [D:\jenkins\workspace\JDK8u-WIN64\open_source\openjdk\OpenJDK\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 619]
+Event: 0.519 Thread 0x0000000000fc0000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException': 73> (0x000000076dc2f340) thrown at [D:\jenkins\workspace\JDK8u-WIN64\open_source\openjdk\OpenJDK\hotspot\src\share\vm\interpreter\interpreterRuntime.cpp, line 371]
+Event: 0.519 Thread 0x0000000000fc0000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException': 131> (0x000000076dc30ce8) thrown at [D:\jenkins\workspace\JDK8u-WIN64\open_source\openjdk\OpenJDK\hotspot\src\share\vm\interpreter\interpreterRuntime.cpp, line 371]
+Event: 0.888 Thread 0x0000000000fc0000 Exception <a 'java/lang/NoClassDefFoundError': com/google/inject/servlet/ServletModuleTargetVisitor> (0x000000076c6d4ed8) thrown at [D:\jenkins\workspace\JDK8u-WIN64\open_source\openjdk\OpenJDK\hotspot\src\share\vm\classfile\systemDictionary.cpp, line 199
+Event: 0.888 Thread 0x0000000000fc0000 Exception <a 'java/lang/NoClassDefFoundError'> (0x000000076c6d4ed8) thrown at [D:\jenkins\workspace\JDK8u-WIN64\open_source\openjdk\OpenJDK\hotspot\src\share\vm\prims\jvm.cpp, line 1516]
+Event: 0.888 Thread 0x0000000000fc0000 Exception <a 'java/lang/NoClassDefFoundError': javax/annotation/Priority> (0x000000076c6da328) thrown at [D:\jenkins\workspace\JDK8u-WIN64\open_source\openjdk\OpenJDK\hotspot\src\share\vm\classfile\systemDictionary.cpp, line 199]
+Event: 0.966 Thread 0x0000000000fc0000 Implicit null exception at 0x0000000002d5c6d5 to 0x0000000002d5c8ad
+Event: 1.124 Thread 0x0000000000fc0000 Implicit null exception at 0x000000000320ecc3 to 0x000000000320ef0d
+
+Events (250 events):
+Event: 1.029 loading class org/apache/maven/model/interpolation/PathTranslatingPostProcessor
+Event: 1.029 loading class org/apache/maven/model/interpolation/PathTranslatingPostProcessor done
+Event: 1.029 loading class org/apache/maven/model/interpolation/UrlNormalizingPostProcessor
+Event: 1.029 loading class org/apache/maven/model/interpolation/UrlNormalizingPostProcessor done
+Event: 1.029 loading class org/apache/maven/model/interpolation/StringSearchModelInterpolator$InterpolateObjectAction
+Event: 1.029 loading class org/apache/maven/model/interpolation/StringSearchModelInterpolator$InterpolateObjectAction done
+Event: 1.030 loading class org/apache/maven/model/interpolation/StringSearchModelInterpolator$InterpolateObjectAction$CacheItem
+Event: 1.030 loading class org/apache/maven/model/interpolation/StringSearchModelInterpolator$InterpolateObjectAction$CacheItem done
+Event: 1.030 loading class org/apache/maven/model/Parent
+Event: 1.030 loading class org/apache/maven/model/Parent done
+Event: 1.030 loading class org/apache/maven/model/Organization
+Event: 1.030 loading class org/apache/maven/model/Organization done
+Event: 1.030 loading class org/apache/maven/model/Prerequisites
+Event: 1.030 loading class org/apache/maven/model/Prerequisites done
+Event: 1.030 loading class org/apache/maven/model/Scm
+Event: 1.030 loading class org/apache/maven/model/Scm done
+Event: 1.031 loading class org/apache/maven/model/IssueManagement
+Event: 1.031 loading class org/apache/maven/model/IssueManagement done
+Event: 1.031 loading class org/apache/maven/model/CiManagement
+Event: 1.031 loading class org/apache/maven/model/CiManagement done
+Event: 1.031 loading class org/apache/maven/model/interpolation/StringSearchModelInterpolator$InterpolateObjectAction$StringField
+Event: 1.031 loading class org/apache/maven/model/interpolation/StringSearchModelInterpolator$InterpolateObjectAction$StringField done
+Event: 1.031 loading class org/apache/maven/model/interpolation/StringSearchModelInterpolator$InterpolateObjectAction$CacheField
+Event: 1.031 loading class org/apache/maven/model/interpolation/StringSearchModelInterpolator$InterpolateObjectAction$CacheField done
+Event: 1.031 loading class org/apache/maven/model/interpolation/StringSearchModelInterpolator$InterpolateObjectAction$ObjectField
+Event: 1.031 loading class org/apache/maven/model/interpolation/StringSearchModelInterpolator$InterpolateObjectAction$ObjectField done
+Event: 1.032 loading class org/apache/maven/model/interpolation/StringSearchModelInterpolator$InterpolateObjectAction$ListField
+Event: 1.032 loading class org/apache/maven/model/interpolation/StringSearchModelInterpolator$InterpolateObjectAction$ListField done
+Event: 1.032 loading class org/apache/maven/model/DistributionManagement
+Event: 1.032 loading class org/apache/maven/model/DistributionManagement done
+Event: 1.032 loading class org/apache/maven/model/interpolation/StringSearchModelInterpolator$InterpolateObjectAction$MapField
+Event: 1.032 loading class org/apache/maven/model/interpolation/StringSearchModelInterpolator$InterpolateObjectAction$MapField done
+Event: 1.032 loading class org/codehaus/plexus/interpolation/util/ValueSourceUtils
+Event: 1.032 loading class org/codehaus/plexus/interpolation/util/ValueSourceUtils done
+Event: 1.033 loading class org/codehaus/plexus/interpolation/reflection/ReflectionValueExtractor
+Event: 1.033 loading class org/codehaus/plexus/interpolation/reflection/ReflectionValueExtractor done
+Event: 1.033 loading class org/codehaus/plexus/interpolation/reflection/ClassMap
+Event: 1.033 loading class org/codehaus/plexus/interpolation/reflection/ClassMap done
+Event: 1.034 loading class org/codehaus/plexus/interpolation/reflection/ClassMap$MethodInfo
+Event: 1.034 loading class org/codehaus/plexus/interpolation/reflection/ClassMap$MethodInfo done
+Event: 1.034 loading class org/codehaus/plexus/interpolation/reflection/MethodMap$AmbiguousException
+Event: 1.034 loading class org/codehaus/plexus/interpolation/reflection/MethodMap$AmbiguousException done
+Event: 1.034 loading class org/codehaus/plexus/interpolation/reflection/ClassMap$CacheMiss
+Event: 1.034 loading class org/codehaus/plexus/interpolation/reflection/ClassMap$CacheMiss done
+Event: 1.034 loading class org/codehaus/plexus/interpolation/reflection/MethodMap
+Event: 1.034 loading class org/codehaus/plexus/interpolation/reflection/MethodMap done
+Event: 1.035 loading class org/apache/maven/model/MailingList
+Event: 1.035 loading class org/apache/maven/model/MailingList done
+Event: 1.035 loading class org/apache/maven/model/License
+Event: 1.035 loading class org/apache/maven/model/License done
+Event: 1.036 loading class org/codehaus/plexus/interpolation/util/StringUtils
+Event: 1.036 loading class org/codehaus/plexus/interpolation/util/StringUtils done
+Event: 1.036 loading class org/apache/maven/model/Extension
+Event: 1.036 loading class org/apache/maven/model/Extension done
+Event: 1.037 Thread 0x0000000000fc0000 Uncommon trap: trap_request=0xffffff65 fr.pc=0x0000000002e2c7b8
+Event: 1.037 Thread 0x0000000000fc0000 DEOPT PACKING pc=0x0000000002e2c7b8 sp=0x0000000002c2ccb0
+Event: 1.037 Thread 0x0000000000fc0000 DEOPT UNPACKING pc=0x0000000002c8807b sp=0x0000000002c2cc48 mode 2
+Event: 1.038 loading class sun/reflect/UnsafeQualifiedObjectFieldAccessorImpl
+Event: 1.038 loading class sun/reflect/UnsafeQualifiedFieldAccessorImpl
+Event: 1.038 loading class sun/reflect/UnsafeQualifiedFieldAccessorImpl done
+Event: 1.038 loading class sun/reflect/UnsafeQualifiedObjectFieldAccessorImpl done
+Event: 1.038 loading class org/apache/maven/repository/internal/ArtifactDescriptorUtils
+Event: 1.038 loading class org/apache/maven/repository/internal/ArtifactDescriptorUtils done
+Event: 1.038 loading class java/util/Collections$SingletonList
+Event: 1.038 loading class java/util/Collections$SingletonList done
+Event: 1.039 loading class java/util/Collections$1
+Event: 1.039 loading class java/util/Collections$1 done
+Event: 1.039 loading class java/util/ArrayList$ListItr
+Event: 1.039 loading class java/util/ArrayList$ListItr done
+Event: 1.039 Executing VM operation: Deoptimize
+Event: 1.039 Executing VM operation: Deoptimize done
+Event: 1.039 loading class org/apache/maven/project/DefaultProjectBuilder$InterimResult
+Event: 1.039 loading class org/apache/maven/project/DefaultProjectBuilder$InterimResult done
+Event: 1.040 loading class org/apache/maven/project/ReactorModelPool$CacheKey
+Event: 1.040 loading class org/apache/maven/project/ReactorModelPool$CacheKey done
+Event: 1.040 loading class org/apache/maven/model/building/ModelBuildingEventCatapult$1
+Event: 1.040 loading class org/apache/maven/model/building/ModelBuildingEventCatapult$1 done
+Event: 1.040 loading class org/apache/maven/model/building/DefaultModelBuildingEvent
+Event: 1.040 loading class org/apache/maven/model/building/DefaultModelBuildingEvent done
+Event: 1.041 loading class org/apache/maven/lifecycle/mapping/Lifecycle
+Event: 1.041 loading class org/apache/maven/lifecycle/mapping/Lifecycle done
+Event: 1.042 loading class org/apache/maven/lifecycle/mapping/LifecycleMojo
+Event: 1.042 loading class org/apache/maven/lifecycle/mapping/LifecycleMojo done
+Event: 1.043 loading class org/apache/maven/lifecycle/internal/DefaultLifecyclePluginAnalyzer$1
+Event: 1.043 loading class org/apache/maven/lifecycle/internal/DefaultLifecyclePluginAnalyzer$1 done
+Event: 1.044 loading class org/apache/maven/model/building/ModelCacheTag$1
+Event: 1.044 loading class org/apache/maven/model/building/ModelCacheTag$1 done
+Event: 1.044 loading class org/apache/maven/model/building/ModelCacheTag$2
+Event: 1.044 loading class org/apache/maven/model/building/ModelCacheTag$2 done
+Event: 1.044 loading class org/apache/maven/project/ReactorModelCache$CacheKey
+Event: 1.044 loading class org/apache/maven/project/ReactorModelCache$CacheKey done
+Event: 1.044 loading class org/eclipse/aether/artifact/DefaultArtifact
+Event: 1.044 loading class org/eclipse/aether/artifact/DefaultArtifact done
+Event: 1.045 loading class org/eclipse/aether/artifact/AbstractArtifact
+Event: 1.045 loading class org/eclipse/aether/artifact/AbstractArtifact done
+Event: 1.045 loading class java/util/Collections$SingletonSet
+Event: 1.045 loading class java/util/Collections$SingletonSet done
+Event: 1.045 loading class org/eclipse/aether/internal/impl/DefaultSyncContextFactory$DefaultSyncContext
+Event: 1.045 loading class org/eclipse/aether/internal/impl/DefaultSyncContextFactory$DefaultSyncContext done
+Event: 1.046 loading class org/eclipse/aether/RepositoryEvent$Builder
+Event: 1.046 loading class org/eclipse/aether/RepositoryEvent$Builder done
+Event: 1.046 loading class org/eclipse/aether/RepositoryEvent$EventType
+Event: 1.046 loading class org/eclipse/aether/RepositoryEvent$EventType done
+Event: 1.046 loading class org/eclipse/aether/internal/impl/DefaultRepositoryEventDispatcher$1
+Event: 1.046 loading class org/eclipse/aether/internal/impl/DefaultRepositoryEventDispatcher$1 done
+Event: 1.047 loading class org/apache/maven/repository/internal/DefaultVersionResolver$Key
+Event: 1.047 loading class org/apache/maven/repository/internal/DefaultVersionResolver$Key done
+Event: 1.047 loading class org/eclipse/aether/internal/impl/CacheUtils
+Event: 1.047 loading class org/eclipse/aether/internal/impl/CacheUtils done
+Event: 1.047 loading class org/eclipse/aether/repository/LocalArtifactRequest
+Event: 1.047 loading class org/eclipse/aether/repository/LocalArtifactRequest done
+Event: 1.051 loading class org/apache/maven/model/Site
+Event: 1.051 loading class org/apache/maven/model/Site done
+Event: 1.052 loading class org/apache/maven/project/ProjectModelResolver$1
+Event: 1.052 loading class org/apache/maven/project/ProjectModelResolver$1 done
+Event: 1.054 loading class sun/nio/ch/FileChannelImpl
+Event: 1.054 loading class java/nio/channels/FileChannel
+Event: 1.054 loading class java/nio/channels/SeekableByteChannel
+Event: 1.054 loading class java/nio/channels/ByteChannel
+Event: 1.054 loading class java/nio/channels/ReadableByteChannel
+Event: 1.054 loading class java/nio/channels/Channel
+Event: 1.054 loading class java/nio/channels/Channel done
+Event: 1.054 loading class java/nio/channels/ReadableByteChannel done
+Event: 1.054 loading class java/nio/channels/WritableByteChannel
+Event: 1.054 loading class java/nio/channels/WritableByteChannel done
+Event: 1.054 loading class java/nio/channels/ByteChannel done
+Event: 1.054 loading class java/nio/channels/SeekableByteChannel done
+Event: 1.054 loading class java/nio/channels/GatheringByteChannel
+Event: 1.054 loading class java/nio/channels/GatheringByteChannel done
+Event: 1.054 loading class java/nio/channels/ScatteringByteChannel
+Event: 1.054 loading class java/nio/channels/ScatteringByteChannel done
+Event: 1.054 loading class java/nio/channels/spi/AbstractInterruptibleChannel
+Event: 1.054 loading class java/nio/channels/InterruptibleChannel
+Event: 1.054 loading class java/nio/channels/InterruptibleChannel done
+Event: 1.054 loading class java/nio/channels/spi/AbstractInterruptibleChannel done
+Event: 1.054 loading class java/nio/channels/FileChannel done
+Event: 1.054 loading class sun/nio/ch/FileChannelImpl done
+Event: 1.055 loading class java/nio/file/attribute/FileAttribute
+Event: 1.055 loading class java/nio/file/attribute/FileAttribute done
+Event: 1.055 loading class sun/nio/ch/IOUtil
+Event: 1.055 loading class sun/nio/ch/IOUtil done
+Event: 1.055 loading class sun/nio/ch/IOUtil$1
+Event: 1.055 loading class sun/nio/ch/IOUtil$1 done
+Event: 1.056 loading class sun/nio/ch/NativeThreadSet
+Event: 1.056 loading class sun/nio/ch/NativeThreadSet done
+Event: 1.056 loading class sun/nio/ch/FileDispatcherImpl
+Event: 1.056 loading class sun/nio/ch/FileDispatcher
+Event: 1.056 loading class sun/nio/ch/NativeDispatcher
+Event: 1.056 loading class sun/nio/ch/NativeDispatcher done
+Event: 1.056 loading class sun/nio/ch/FileDispatcher done
+Event: 1.056 loading class sun/nio/ch/FileDispatcherImpl done
+Event: 1.056 loading class sun/nio/ch/FileDispatcherImpl$1
+Event: 1.056 loading class sun/nio/ch/FileDispatcherImpl$1 done
+Event: 1.057 loading class sun/nio/ch/FileLockImpl
+Event: 1.057 loading class java/nio/channels/FileLock
+Event: 1.057 loading class java/nio/channels/FileLock done
+Event: 1.057 loading class sun/nio/ch/FileLockImpl done
+Event: 1.057 loading class sun/nio/ch/NativeThread
+Event: 1.057 loading class sun/nio/ch/NativeThread done
+Event: 1.057 loading class sun/nio/ch/FileLockTable
+Event: 1.057 loading class sun/nio/ch/FileLockTable done
+Event: 1.057 loading class sun/nio/ch/SharedFileLockTable
+Event: 1.057 loading class sun/nio/ch/SharedFileLockTable done
+Event: 1.057 loading class sun/nio/ch/FileKey
+Event: 1.057 loading class sun/nio/ch/FileKey done
+Event: 1.057 loading class sun/nio/ch/SharedFileLockTable$FileLockReference
+Event: 1.057 loading class sun/nio/ch/SharedFileLockTable$FileLockReference done
+Event: 1.057 loading class java/nio/channels/spi/AbstractInterruptibleChannel$1
+Event: 1.057 loading class sun/nio/ch/Interruptible
+Event: 1.057 loading class sun/nio/ch/Interruptible done
+Event: 1.057 loading class java/nio/channels/spi/AbstractInterruptibleChannel$1 done
+Event: 1.058 Thread 0x0000000000fc0000 DEOPT PACKING pc=0x000000000316f86a sp=0x0000000002c2d310
+Event: 1.058 Thread 0x0000000000fc0000 DEOPT UNPACKING pc=0x0000000002c8a0d0 sp=0x0000000002c2d190 mode 0
+Event: 1.079 Thread 0x0000000000fc0000 DEOPT PACKING pc=0x0000000003179fcb sp=0x0000000002c2d100
+Event: 1.079 Thread 0x0000000000fc0000 DEOPT UNPACKING pc=0x0000000002c8a0d0 sp=0x0000000002c2cf00 mode 0
+Event: 1.081 loading class org/eclipse/aether/util/version/GenericVersionScheme
+Event: 1.081 loading class org/eclipse/aether/util/version/GenericVersionScheme done
+Event: 1.081 loading class org/eclipse/aether/version/VersionConstraint
+Event: 1.081 loading class org/eclipse/aether/version/VersionConstraint done
+Event: 1.081 loading class org/eclipse/aether/version/VersionRange
+Event: 1.081 loading class org/eclipse/aether/version/VersionRange done
+Event: 1.082 loading class org/eclipse/aether/util/version/GenericVersionConstraint
+Event: 1.082 loading class org/eclipse/aether/util/version/GenericVersionConstraint done
+Event: 1.082 loading class org/eclipse/aether/util/version/GenericVersion
+Event: 1.082 loading class org/eclipse/aether/util/version/GenericVersion done
+Event: 1.082 loading class org/eclipse/aether/util/version/GenericVersion$Tokenizer
+Event: 1.082 loading class org/eclipse/aether/util/version/GenericVersion$Tokenizer done
+Event: 1.083 loading class org/eclipse/aether/util/version/GenericVersion$Item
+Event: 1.083 loading class org/eclipse/aether/util/version/GenericVersion$Item done
+Event: 1.088 Thread 0x0000000000fc0000 DEOPT PACKING pc=0x000000000316f86a sp=0x0000000002c2ced0
+Event: 1.088 Thread 0x0000000000fc0000 DEOPT UNPACKING pc=0x0000000002c8a0d0 sp=0x0000000002c2cd50 mode 0
+Event: 1.088 Thread 0x0000000000fc0000 DEOPT PACKING pc=0x0000000003179fcb sp=0x0000000002c2cf90
+Event: 1.088 Thread 0x0000000000fc0000 DEOPT UNPACKING pc=0x0000000002c8a0d0 sp=0x0000000002c2cd90 mode 0
+Event: 1.088 Thread 0x0000000000fc0000 Uncommon trap: trap_request=0xffffff65 fr.pc=0x00000000031c7a84
+Event: 1.088 Thread 0x0000000000fc0000 DEOPT PACKING pc=0x00000000031c7a84 sp=0x0000000002c2d110
+Event: 1.088 Thread 0x0000000000fc0000 DEOPT UNPACKING pc=0x0000000002c8807b sp=0x0000000002c2d068 mode 2
+Event: 1.093 Thread 0x0000000000fc0000 DEOPT PACKING pc=0x0000000003179fcb sp=0x0000000002c2cf20
+Event: 1.093 Thread 0x0000000000fc0000 DEOPT UNPACKING pc=0x0000000002c8a0d0 sp=0x0000000002c2cd20 mode 0
+Event: 1.094 Thread 0x0000000000fc0000 DEOPT PACKING pc=0x0000000003179fcb sp=0x0000000002c2cc90
+Event: 1.094 Thread 0x0000000000fc0000 DEOPT UNPACKING pc=0x0000000002c8a0d0 sp=0x0000000002c2ca90 mode 0
+Event: 1.107 Thread 0x0000000000fc0000 DEOPT PACKING pc=0x000000000316f86a sp=0x0000000002c2d040
+Event: 1.107 Thread 0x0000000000fc0000 DEOPT UNPACKING pc=0x0000000002c8a0d0 sp=0x0000000002c2cec0 mode 0
+Event: 1.124 Thread 0x0000000000fc0000 Uncommon trap: trap_request=0xfffffff4 fr.pc=0x000000000320ef28
+Event: 1.124 Thread 0x0000000000fc0000 DEOPT PACKING pc=0x000000000320ef28 sp=0x0000000002c2d440
+Event: 1.124 Thread 0x0000000000fc0000 DEOPT UNPACKING pc=0x0000000002c8807b sp=0x0000000002c2d3d8 mode 2
+Event: 1.133 Thread 0x0000000000fc0000 DEOPT PACKING pc=0x000000000316f86a sp=0x0000000002c2ced0
+Event: 1.133 Thread 0x0000000000fc0000 DEOPT UNPACKING pc=0x0000000002c8a0d0 sp=0x0000000002c2cd50 mode 0
+Event: 1.134 Thread 0x0000000000fc0000 Uncommon trap: trap_request=0xffffff65 fr.pc=0x000000000321cf74
+Event: 1.134 Thread 0x0000000000fc0000 DEOPT PACKING pc=0x000000000321cf74 sp=0x0000000002c2d350
+Event: 1.134 Thread 0x0000000000fc0000 DEOPT UNPACKING pc=0x0000000002c8807b sp=0x0000000002c2d2b0 mode 2
+Event: 1.153 Thread 0x0000000000fc0000 DEOPT PACKING pc=0x000000000316f86a sp=0x0000000002c2ced0
+Event: 1.153 Thread 0x0000000000fc0000 DEOPT UNPACKING pc=0x0000000002c8a0d0 sp=0x0000000002c2cd50 mode 0
+Event: 1.154 loading class org/apache/maven/model/ActivationFile
+Event: 1.154 loading class org/apache/maven/model/ActivationFile done
+Event: 1.209 Thread 0x0000000000fc0000 Uncommon trap: trap_request=0xffffff65 fr.pc=0x0000000003226e60
+Event: 1.209 Thread 0x0000000000fc0000 DEOPT PACKING pc=0x0000000003226e60 sp=0x0000000002c2cfb0
+Event: 1.209 Thread 0x0000000000fc0000 DEOPT UNPACKING pc=0x0000000002c8807b sp=0x0000000002c2cef8 mode 2
+Event: 1.209 Thread 0x0000000000fc0000 Uncommon trap: trap_request=0xffffff65 fr.pc=0x0000000003148a68
+Event: 1.209 Thread 0x0000000000fc0000 DEOPT PACKING pc=0x0000000003148a68 sp=0x0000000002c2cf60
+Event: 1.209 Thread 0x0000000000fc0000 DEOPT UNPACKING pc=0x0000000002c8807b sp=0x0000000002c2cef0 mode 2
+Event: 1.210 Thread 0x0000000000fc0000 DEOPT PACKING pc=0x0000000002dab99c sp=0x0000000002c2cbd0
+Event: 1.210 Thread 0x0000000000fc0000 DEOPT UNPACKING pc=0x0000000002c8a0d0 sp=0x0000000002c2ca48 mode 0
+Event: 1.334 loading class org/apache/maven/artifact/versioning/DefaultArtifactVersion
+Event: 1.334 loading class org/apache/maven/artifact/versioning/DefaultArtifactVersion done
+Event: 1.334 Executing VM operation: ForceSafepoint
+Event: 1.334 Executing VM operation: ForceSafepoint done
+Event: 1.335 loading class org/apache/maven/artifact/versioning/ComparableVersion
+Event: 1.335 loading class org/apache/maven/artifact/versioning/ComparableVersion done
+Event: 1.335 loading class org/apache/maven/artifact/versioning/ComparableVersion$Item
+Event: 1.335 loading class org/apache/maven/artifact/versioning/ComparableVersion$Item done
+Event: 1.336 loading class org/apache/maven/artifact/versioning/ComparableVersion$ListItem
+Event: 1.336 loading class org/apache/maven/artifact/versioning/ComparableVersion$ListItem done
+Event: 1.336 loading class org/apache/maven/artifact/versioning/ComparableVersion$IntegerItem
+Event: 1.336 loading class org/apache/maven/artifact/versioning/ComparableVersion$IntegerItem done
+Event: 1.337 loading class java/math/BigInteger
+Event: 1.337 loading class java/math/BigInteger done
+Event: 1.338 loading class org/apache/maven/artifact/versioning/ComparableVersion$StringItem
+Event: 1.338 loading class org/apache/maven/artifact/versioning/ComparableVersion$StringItem done
+Event: 1.339 loading class java/math/MutableBigInteger
+Event: 1.339 loading class java/math/MutableBigInteger done
+Event: 1.340 loading class org/apache/maven/artifact/DefaultArtifact
+Event: 1.340 loading class org/apache/maven/artifact/DefaultArtifact done
+Event: 1.341 loading class org/apache/maven/artifact/InvalidArtifactRTException
+Event: 1.341 loading class org/apache/maven/artifact/InvalidArtifactRTException done
+Event: 1.342 loading class org/apache/maven/artifact/versioning/Restriction
+Event: 1.342 loading class org/apache/maven/artifact/versioning/Restriction done
+Event: 1.349 loading class org/apache/maven/artifact/resolver/filter/ExcludesArtifactFilter
+Event: 1.349 loading class org/apache/maven/artifact/resolver/filter/ExcludesArtifactFilter done
+Event: 1.349 loading class org/apache/maven/artifact/resolver/filter/IncludesArtifactFilter
+Event: 1.349 loading class org/apache/maven/artifact/resolver/filter/IncludesArtifactFilter done
+
+
+Dynamic libraries:
+0x00007ff7f6f10000 - 0x00007ff7f6f58000 	C:\Program Files\Huawei\jdk1.8.0_222\bin\java.exe
+0x00007ffcb6810000 - 0x00007ffcb69f1000 	C:\windows\SYSTEM32\ntdll.dll
+0x00007ffcb45a0000 - 0x00007ffcb4651000 	C:\windows\System32\KERNEL32.DLL
+0x00007ffcb2eb0000 - 0x00007ffcb3123000 	C:\windows\System32\KERNELBASE.dll
+0x000000006c920000 - 0x000000006c9b5000 	C:\windows\System32\SYSFER.DLL
+0x00007ffcb4660000 - 0x00007ffcb4701000 	C:\windows\System32\ADVAPI32.dll
+0x00007ffcb3e40000 - 0x00007ffcb3ede000 	C:\windows\System32\msvcrt.dll
+0x00007ffcb66b0000 - 0x00007ffcb670b000 	C:\windows\System32\sechost.dll
+0x00007ffcb3f60000 - 0x00007ffcb4084000 	C:\windows\System32\RPCRT4.dll
+0x00007ffcb4b40000 - 0x00007ffcb4cd0000 	C:\windows\System32\USER32.dll
+0x00007ffcb31e0000 - 0x00007ffcb3200000 	C:\windows\System32\win32u.dll
+0x00007ffcb4b10000 - 0x00007ffcb4b38000 	C:\windows\System32\GDI32.dll
+0x00007ffcb3b00000 - 0x00007ffcb3c91000 	C:\windows\System32\gdi32full.dll
+0x00007ffcb2be0000 - 0x00007ffcb2c7f000 	C:\windows\System32\msvcp_win.dll
+0x00007ffcb2d50000 - 0x00007ffcb2e48000 	C:\windows\System32\ucrtbase.dll
+0x00007ffc9ee30000 - 0x00007ffc9f099000 	C:\windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.17134.950_none_fb3da4273069d3e0\COMCTL32.dll
+0x00007ffcb4710000 - 0x00007ffcb4a32000 	C:\windows\System32\combase.dll
+0x00007ffcb2cd0000 - 0x00007ffcb2d49000 	C:\windows\System32\bcryptPrimitives.dll
+0x00007ffcb5010000 - 0x00007ffcb503d000 	C:\windows\System32\IMM32.DLL
+0x0000000069cf0000 - 0x000000006a57e000 	C:\Program Files\Huawei\jdk1.8.0_222\jre\bin\server\jvm.dll
+0x00007ffcb6770000 - 0x00007ffcb6778000 	C:\windows\System32\PSAPI.DLL
+0x00007ffc9b4a0000 - 0x00007ffc9b4a9000 	C:\windows\SYSTEM32\WSOCK32.dll
+0x00007ffcb4dc0000 - 0x00007ffcb4e2c000 	C:\windows\System32\WS2_32.dll
+0x00007ffcacab0000 - 0x00007ffcacad3000 	C:\windows\SYSTEM32\WINMM.dll
+0x00007ffca2a30000 - 0x00007ffca2a3a000 	C:\windows\SYSTEM32\VERSION.dll
+0x00007ffc98870000 - 0x00007ffc98886000 	C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2019.1.1\jre64\bin\VCRUNTIME140.dll
+0x00007ffcaca80000 - 0x00007ffcacaaa000 	C:\windows\SYSTEM32\WINMMBASE.dll
+0x00007ffcb2c80000 - 0x00007ffcb2cc9000 	C:\windows\System32\cfgmgr32.dll
+0x00007ffcb2bc0000 - 0x00007ffcb2bd1000 	C:\windows\System32\kernel.appcore.dll
+0x00007ffc94380000 - 0x00007ffc94391000 	C:\Program Files\Huawei\jdk1.8.0_222\jre\bin\verify.dll
+0x00007ffc86c80000 - 0x00007ffc86cab000 	C:\Program Files\Huawei\jdk1.8.0_222\jre\bin\java.dll
+0x00007ffc9d7e0000 - 0x00007ffc9d814000 	C:\Program Files\Huawei\jdk1.8.0_222\jre\bin\instrument.dll
+0x00007ffc94360000 - 0x00007ffc94378000 	C:\Program Files\Huawei\jdk1.8.0_222\jre\bin\zip.dll
+0x00007ffcb5270000 - 0x00007ffcb66b0000 	C:\windows\System32\SHELL32.dll
+0x00007ffcb4a40000 - 0x00007ffcb4ae9000 	C:\windows\System32\shcore.dll
+0x00007ffcb33f0000 - 0x00007ffcb3afd000 	C:\windows\System32\windows.storage.dll
+0x00007ffcb6710000 - 0x00007ffcb6761000 	C:\windows\System32\shlwapi.dll
+0x00007ffcb2ba0000 - 0x00007ffcb2bbf000 	C:\windows\System32\profapi.dll
+0x00007ffcb2b50000 - 0x00007ffcb2b9c000 	C:\windows\System32\powrprof.dll
+0x00007ffcb2b20000 - 0x00007ffcb2b2a000 	C:\windows\System32\FLTLIB.DLL
+0x00007ffcac650000 - 0x00007ffcac66a000 	C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2019.1.1\bin\breakgen64.dll
+0x00007ffc929d0000 - 0x00007ffc929ec000 	C:\Program Files\Huawei\jdk1.8.0_222\jre\bin\net.dll
+0x00007ffca27a0000 - 0x00007ffca2969000 	C:\windows\SYSTEM32\urlmon.dll
+0x00007ffca1d90000 - 0x00007ffca2036000 	C:\windows\SYSTEM32\iertutil.dll
+0x00007ffcb24b0000 - 0x00007ffcb24bb000 	C:\windows\SYSTEM32\CRYPTBASE.DLL
+0x00007ffcb2350000 - 0x00007ffcb23b6000 	C:\windows\system32\mswsock.dll
+0x00007ffc919b0000 - 0x00007ffc919c3000 	C:\Program Files\Huawei\jdk1.8.0_222\jre\bin\nio.dll
+
+VM Arguments:
+jvm_args: -Dmaven.multiModuleProjectDirectory=D:\source\ddd-workshop-cse\ddd-workshop-cse\user -Dmaven.home=C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2019.1.1\plugins\maven\lib\maven3 -Dclassworlds.conf=C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2019.1.1\plugins\maven\lib\maven3\bin\m2.conf -javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2019.1.1\lib\idea_rt.jar=57771:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2019.1.1\bin -Dfile.encoding=UTF-8 
+java_command: org.codehaus.classworlds.Launcher -Didea.version2019.1.1 -Dmaven.repo.local=C:\Users\z00392847\.m2\repository-6.5.59 clean
+java_class_path (initial): C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2019.1.1\plugins\maven\lib\maven3\boot\plexus-classworlds-2.5.2.jar;C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2019.1.1\lib\idea_rt.jar
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+JAVA_HOME=C:\Program Files\Java\jdk1.8.0_111
+PATH=C:\Program Files\Huawei\jdk1.8.0_222\bin;C:\Program Files\Huawei\jdk1.8.0_222\jre\bin;C:\Program Files\Huawei\jre1.8.0_222\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\windows;C:\windows\system32;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0;C:\Windows;C:\Windows\system32;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\windows\System32\WindowsPowerShell\v1.0\;C:\windows\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\Pandoc\;C:\crc-windows-1.1.0-amd64\;C:\Users\z00392847\AppData\Local\Microsoft\WindowsApps;C:\Program Files (x86)\SSH Communications Security\SSH Secure Shell;C:\Program Files\IDM Computer Solutions\UltraEdit\;C:\Program Files\Java\jdk1.8.0_111\bin;c:\program files\apache-maven-3.6.1\bin;C:\crc-windows-1.1.0-amd64\;
+USERNAME=z00392847
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 142 Stepping 10, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 10.0 , 64 bit Build 17134 (10.0.17134.753)
+
+CPU:total 8 (initial active 8) (4 cores per cpu, 2 threads per core) family 6 model 142 stepping 10, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, avx2, aes, clmul, erms, rtm, 3dnowpref, lzcnt, ht, tsc, tscinvbit, bmi1, bmi2, adx
+
+Memory: 4k page, physical 16611280k(6879700k free), swap 18708432k(4120k free)
+
+vm_info: OpenJDK 64-Bit Server VM (25.222-b10) for windows-amd64 JRE (1.8.0_222-Huawei_JDK_V100R001C00SPC150B002-b10), built on ..Unknown d te...... by "Jenkins" with MS VC++ 15.7 (VS2017)
+
+time: Mon Nov 25 20:01:50 2019
+timezone: ?D1¨²¡À¨º¡Á?¨º¡À??
+elapsed time: 1 seconds (0d 0h 0m 1s)
+
