@@ -29,8 +29,8 @@ cse:
 #    address: 0.0.0.0:9000
     address: 0.0.0.0:9010
   credentials:
-    accessKey: 0QW7ZMETOVSH2PXMCUKO
-    secretKey: 5DQ2dAJzabn5CvLcx6MCLjSCCVqQdNtysmMr7igo
+    accessKey: xxxx
+    secretKey: xxxxxxxxxxxxx
     akskCustomCipher: default
     project: cn-north-4       #引擎所在项目或子项目名称，默认为cn-north-1；若无法解析，则配置为default，可能导致token认证失败。获取方法见本章节前提条件。
   handler:
