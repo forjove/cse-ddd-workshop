@@ -27,8 +27,8 @@ cse:
 #    address: 0.0.0.0:9002
     address: 0.0.0.0:9012
   credentials:
-    accessKey: 0QW7ZMETOVSH2PXMCUKO
-    secretKey: 5DQ2dAJzabn5CvLcx6MCLjSCCVqQdNtysmMr7igo
+    accessKey: xxxxxx
+    secretKey: xxxxxxxxx
     akskCustomCipher: default
     project: cn-north-4 # 请填写project项目名称
   handler:
